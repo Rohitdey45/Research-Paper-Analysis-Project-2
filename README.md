@@ -7,6 +7,8 @@
 
 **GitHub Repository:** https://github.com/Rohitdey45/Research-Paper-Analysis-Project-2
 
+**Google Colab Link:** https://colab.research.google.com/github/Rohitdey45/Research-Paper-Analysis-Project-2/blob/main/notebooks/AI_Placement_Readiness_System_Demo.ipynb
+
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-ff4b4b?logo=streamlit)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn)
