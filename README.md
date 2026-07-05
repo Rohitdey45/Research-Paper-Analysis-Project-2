@@ -1,17 +1,36 @@
 # AI Placement and Resume Readiness System
 
-This project is a Streamlit-based AI career readiness tool that analyzes a resume
-against a target job description, estimates placement readiness, detects skill
-gaps, creates a learning roadmap, and supports mock interview preparation.
+> An AI-powered student placement preparation platform that analyzes resumes,
+> checks ATS alignment, identifies role-specific skill gaps, estimates placement
+> readiness, builds a personalized learning roadmap, and supports mock interview
+> practice through a clean Streamlit interface.
 
-The implementation is intentionally modular and local-first. It does not require
-Gemini, OpenAI, FAISS, or a hosted notebook environment to run the core features.
+## Project Description
+
+Placement preparation is not just about having a resume. Students also need to
+understand whether their resume matches a job description, which skills are
+missing for a target role, how strong their overall profile is, and what they
+should improve before applying.
+
+This project brings those steps into one AI-assisted workflow. The system accepts
+a resume and job description, extracts important resume signals with NLP, scores
+ATS alignment, compares candidate skills with role requirements, estimates
+placement readiness from academic and profile metrics, and generates a practical
+daily/weekly/monthly improvement roadmap. It also includes a mock interview
+practice section where students can answer role-specific questions and receive
+structured feedback.
+
+The implementation is modular, local-first, and explainable. It uses transparent
+NLP and scoring rules with optional Sentence-Transformer similarity for
+deep-learning based resume-job matching. The core app does not require a paid LLM
+API key or a hosted notebook environment.
 
 ## Problem Statement
 
-Build an AI-powered placement preparation system using NLP and deep-learning
-concepts that helps students evaluate resume quality, job-description alignment,
-role readiness, and interview preparation gaps.
+Given a student's resume, target job description, desired role, and profile
+metrics, build an AI-powered system that evaluates resume quality, ATS alignment,
+role readiness, placement probability, skill gaps, and interview preparation
+needs, then provides actionable recommendations to improve placement readiness.
 
 ## Key Features
 
