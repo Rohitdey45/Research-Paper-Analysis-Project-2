@@ -35,7 +35,7 @@
 | Course / Branch | Computer Science and Engineering |
 | Email | deyrohitd12@gmail.com |
 | GitHub | https://github.com/Rohitdey45 |
-| LinkedIn | Add your LinkedIn URL |
+| LinkedIn | https://www.linkedin.com/in/rohitdey0007 |
 
 ---
 
