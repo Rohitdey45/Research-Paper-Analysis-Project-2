@@ -1,27 +1,17 @@
 # Data Folder
 
-This folder holds generated artifacts and is intentionally left empty in the
-repository (the files are large and 100% regenerable from source).
+This folder can hold optional sample resumes, job descriptions, and exported
+analysis reports while testing the app locally.
 
-Source dataset: [CShorten/ML-ArXiv-Papers](https://huggingface.co/datasets/CShorten/ML-ArXiv-Papers) on Hugging Face.
+The main application does not require a bundled dataset. Users upload a resume
+or paste resume text directly in the Streamlit interface.
 
-Running the pipeline will create these files here automatically:
+Suggested local-only files:
 
 | File | Created by | Description |
 |---|---|---|
-| `cleaned_arxiv_papers.csv` | `src/data_prep.py` | Cleaned title + abstract + combined `paper_text` for ~50,000 papers |
-| `arxiv_embeddings.npy` | `src/build_index.py` | 384-dim sentence embeddings for every paper (all-MiniLM-L6-v2) |
-| `paper_faiss.index` | `src/build_index.py` | FAISS `IndexFlatIP` index used for fast cosine-similarity search |
+| `sample_resume.txt` | User | Resume text used for testing |
+| `sample_job_description.txt` | User | Job description used for matching |
+| `analysis_report.json` | App export | Resume analysis output |
 
-## To generate everything from scratch
-
-```bash
-python src/data_prep.py --max-papers 5000 --force
-python src/build_index.py --max-papers 5000 --force
-```
-
-Use `--max-papers 50000` for the full project-sized index. A smaller value is
-recommended when testing or recording a demo.
-
-After that, `src/search_engine.py` and `src/app.py` will load these cached
-files instantly instead of recomputing them.
+Keep real resumes out of GitHub because they may contain personal information.

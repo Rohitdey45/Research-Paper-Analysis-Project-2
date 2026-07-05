@@ -1,79 +1,58 @@
-# Research Paper Analysis Project
+# AI Resume Analyzer using NLP and Deep Learning
 
-Research Paper Analysis Project is a semantic search system for machine learning research papers.
-Instead of matching only exact keywords, it converts a research query into a
-sentence embedding, searches an ArXiv paper index with FAISS, and then optionally
-adds AI summaries and key phrases for each result.
+This project analyzes a candidate resume against a target job description using
+Natural Language Processing and deep-learning based semantic similarity. It
+extracts resume text, detects important sections, identifies technical skills,
+compares resume keywords with job requirements, and generates an overall match
+score with improvement recommendations.
 
-This version has been customized from the base research-paper search idea with a
-cleaner Streamlit interface, faster optional model loading, CSV export, similarity
-filtering, safer cache checks, and command-line controls for building smaller demo
-indexes.
+## Problem Statement
 
-## What The App Does
+Build an AI Resume Analyzer using NLP and Deep Learning that helps candidates
+understand how well their resume matches a job description and what changes can
+improve their chances of shortlisting.
 
-Enter a query such as:
+## Key Features
 
-```text
-medical image segmentation with deep learning
-```
-
-The system will:
-
-1. Embed the query with `sentence-transformers/all-MiniLM-L6-v2`.
-2. Search a FAISS vector index built from ArXiv ML paper titles and abstracts.
-3. Rank papers by cosine similarity.
-4. Optionally summarize each abstract with a BART summarization model.
-5. Optionally extract key phrases with KeyBERT.
-6. Let the user download the visible results as a CSV file.
-
-## Custom Features In This Version
-
-- Renamed and redesigned Streamlit app: `Research Paper Analysis Project`.
-- Fixed garbled UI/README encoding text.
-- Added example-query buttons for faster demos.
-- Added a minimum similarity filter.
-- Added CSV export for search results.
-- Added abstract word counts for each result.
-- Lazy-loads summarizer and KeyBERT only when those options are enabled.
-- Handles missing index/data files with clear setup commands inside the app.
-- Added `--max-papers` and `--force` CLI options for data/index creation.
-- Added cache-shape checks so stale embeddings or FAISS indexes are rebuilt.
+- Upload a resume as PDF, TXT, or Markdown.
+- Paste a target job description for comparison.
+- Extract skills from resume and job description.
+- Compute skill match and missing skills.
+- Extract and compare important job keywords.
+- Detect resume sections such as Summary, Skills, Experience, Projects, and Education.
+- Estimate experience years from resume text when available.
+- Calculate semantic job-fit score using Sentence-Transformer embeddings.
+- Fall back to TF-IDF similarity if the deep-learning model is unavailable.
+- Generate practical resume improvement recommendations.
+- Export the full analysis report as JSON.
 
 ## Tech Stack
 
 | Layer | Tool |
 |---|---|
-| Dataset | `CShorten/ML-ArXiv-Papers` from Hugging Face |
-| Embeddings | `sentence-transformers/all-MiniLM-L6-v2` |
-| Vector Search | `faiss-cpu` with inner-product search over normalized vectors |
-| Summarization | `sshleifer/distilbart-cnn-12-6` |
-| Key Phrases | `keybert` |
-| Data Handling | `pandas`, `numpy` |
-| App UI | `streamlit` |
+| Frontend | Streamlit |
+| NLP | TF-IDF, regex parsing, keyword extraction |
+| Deep Learning | Sentence Transformers |
+| ML Utilities | scikit-learn, NumPy |
+| Data Handling | pandas |
+| PDF Parsing | pypdf |
 
 ## Project Structure
 
 ```text
-AI-Research-Paper-Intelligence-System-main/
+Research-Paper-Analysis-Project/
 |-- README.md
 |-- requirements.txt
 |-- data/
 |   `-- README.md
-|-- notebooks/
-|   |-- 01_EDA_and_Embeddings.ipynb
-|   `-- 02_Search_Engine.ipynb
 `-- src/
     |-- app.py
-    |-- build_index.py
-    |-- data_prep.py
-    `-- search_engine.py
+    `-- resume_analyzer.py
 ```
 
 ## Setup
 
-Create and activate a virtual environment if you want to keep dependencies
-separate from other Python projects.
+Create a virtual environment and install dependencies:
 
 ```bash
 python -m venv .venv
@@ -81,68 +60,44 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Build The Data And Index
-
-For a quick demo, build a smaller index first:
-
-```bash
-python src/data_prep.py --max-papers 5000 --force
-python src/build_index.py --max-papers 5000 --force
-```
-
-For the full project-sized index:
-
-```bash
-python src/data_prep.py --max-papers 50000 --force
-python src/build_index.py --max-papers 50000 --force
-```
-
-The generated files are stored in `data/`:
-
-- `cleaned_arxiv_papers.csv`
-- `arxiv_embeddings.npy`
-- `paper_faiss.index`
-
-These files are not included in the repository because they are large and can be
-regenerated from the source dataset.
-
 ## Run The App
 
 ```bash
 streamlit run src/app.py
 ```
 
-Open the local Streamlit URL, usually:
+Open the local URL printed by Streamlit, usually:
 
 ```text
 http://localhost:8501
 ```
 
-## Python Usage
+## How It Works
 
-```python
-from src.search_engine import PaperSearchEngine
+1. The user uploads a resume or pastes resume text.
+2. The user pastes a target job description.
+3. The app extracts resume signals such as skills, sections, contact details,
+   experience phrases, and keywords.
+4. A Sentence-Transformer model converts the resume and job description into
+   dense vectors.
+5. Cosine similarity between those vectors gives the semantic fit score.
+6. The analyzer combines semantic fit, skill match, keyword match, and resume
+   section coverage into one overall match score.
+7. The app shows missing skills, missing keywords, and actionable suggestions.
 
-engine = PaperSearchEngine(load_summarizer=True, load_keybert=True)
-results = engine.full_report(
-    query="graph neural networks for drug discovery",
-    k=5,
-    include_summary=True,
-    include_keywords=True,
-    keyword_count=6,
-)
+## Scoring Logic
 
-for paper in results:
-    print(paper["title"], paper["score"])
-    print(paper.get("summary", ""))
-    print(paper.get("keywords", []))
-```
+| Component | Weight |
+|---|---:|
+| Semantic similarity | 45% |
+| Skill match | 30% |
+| Keyword match | 15% |
+| Resume section coverage | 10% |
 
-## Notes For Demo
+## Notes
 
-- Building embeddings for 50,000 papers can take a while on CPU.
-- Use `--max-papers 2000` or `--max-papers 5000` when recording or testing.
-- The first app run is slower when summaries or keywords are enabled because
-  transformer models need to load.
-- If only semantic search is needed, disable summaries and key phrases in the
-  sidebar for faster results.
+- The first deep-learning analysis can take longer because the transformer
+  model needs to load.
+- For faster testing, turn off the deep-learning model in the sidebar. The app
+  will use TF-IDF similarity instead.
+- Do not commit real resumes to GitHub because they may contain private data.

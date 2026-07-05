@@ -1,8 +1,9 @@
-# Data & model artifacts (large, regenerable -- see data/README.md)
-data/*.csv
-data/*.npy
-data/*.index
-!data/README.md
+# Generated reports / local files
+reports/
+uploads/
+*.csv
+*.xlsx
+*.json
 
 # Python
 __pycache__/
