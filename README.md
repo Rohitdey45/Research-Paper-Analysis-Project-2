@@ -5,6 +5,45 @@
 > readiness, builds a personalized learning roadmap, and supports mock interview
 > practice through a clean Streamlit interface.
 
+**GitHub Repository:** https://github.com/Rohitdey45/Research-Paper-Analysis-Project-2
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-ff4b4b?logo=streamlit)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn)
+![NLP](https://img.shields.io/badge/NLP-Resume%20Analysis-blueviolet)
+![Sentence Transformers](https://img.shields.io/badge/Sentence--Transformers-Semantic%20Similarity-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
+---
+
+## Internship Details
+
+| Field | Detail |
+|---|---|
+| Internship Title | AI/ML Internship |
+| Organization | Coding Blocks School of Technology |
+| Duration | June 2026 - July 2026 |
+| Mentor / Supervisor | Aryesh Rai |
+| Internship Type | Remote |
+
+## Candidate Details
+
+| Field | Detail |
+|---|---|
+| Name | Rohit Dey |
+| Institution | Add your institution name |
+| Course / Branch | Computer Science and Engineering |
+| Roll No. / Registration No. | Add your roll number |
+| Email | deyrohitd12@gmail.com |
+| GitHub | https://github.com/Rohitdey45 |
+| LinkedIn | Add your LinkedIn URL |
+
+---
+
+## Project Name
+
+**AI Placement and Resume Readiness System**
+
 ## Project Description
 
 Placement preparation is not just about having a resume. Students also need to
