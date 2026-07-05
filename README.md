@@ -31,9 +31,8 @@
 | Field | Detail |
 |---|---|
 | Name | Rohit Dey |
-| Institution | Add your institution name |
+| Institution | Guru Gobind Singh Educational Society's Technical Campus |
 | Course / Branch | Computer Science and Engineering |
-| Roll No. / Registration No. | Add your roll number |
 | Email | deyrohitd12@gmail.com |
 | GitHub | https://github.com/Rohitdey45 |
 | LinkedIn | Add your LinkedIn URL |
