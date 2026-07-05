@@ -1,6 +1,6 @@
-# ScholarScope AI
+# Research Paper Analysis Project
 
-ScholarScope AI is a semantic search system for machine learning research papers.
+Research Paper Analysis Project is a semantic search system for machine learning research papers.
 Instead of matching only exact keywords, it converts a research query into a
 sentence embedding, searches an ArXiv paper index with FAISS, and then optionally
 adds AI summaries and key phrases for each result.
@@ -29,7 +29,7 @@ The system will:
 
 ## Custom Features In This Version
 
-- Renamed and redesigned Streamlit app: `ScholarScope AI`.
+- Renamed and redesigned Streamlit app: `Research Paper Analysis Project`.
 - Fixed garbled UI/README encoding text.
 - Added example-query buttons for faster demos.
 - Added a minimum similarity filter.

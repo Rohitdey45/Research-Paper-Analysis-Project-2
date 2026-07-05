@@ -1,7 +1,7 @@
 """
 app.py
 ------
-Streamlit front-end for ScholarScope AI.
+Streamlit front-end for Research Paper Analysis Project.
 
 Run with:
     streamlit run src/app.py
@@ -16,7 +16,7 @@ from search_engine import PaperSearchEngine
 
 
 st.set_page_config(
-    page_title="ScholarScope AI",
+    page_title="Research Paper Analysis Project",
     layout="wide",
 )
 
@@ -49,7 +49,7 @@ if "query" not in st.session_state:
     st.session_state.query = ""
 
 
-st.title("ScholarScope AI")
+st.title("Research Paper Analysis Project")
 st.caption(
     "Semantic paper discovery for machine learning research: search by meaning, "
     "scan summaries, compare similarity scores, and export the strongest matches."
@@ -139,7 +139,7 @@ if search_clicked and query.strip():
     st.download_button(
         "Download results as CSV",
         data=to_download_csv(filtered_results),
-        file_name="scholarscope_results.csv",
+        file_name="research_paper_analysis_results.csv",
         mime="text/csv",
     )
 
