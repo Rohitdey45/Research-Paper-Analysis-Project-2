@@ -5,16 +5,14 @@
 > readiness, builds a personalized learning roadmap, and supports mock interview
 > practice through a clean Streamlit interface.
 
-**GitHub Repository:** https://github.com/Rohitdey45/Research-Paper-Analysis-Project-2
-
 **Google Colab Link:** https://colab.research.google.com/github/Rohitdey45/Research-Paper-Analysis-Project-2/blob/main/notebooks/AI_Placement_Readiness_System_Demo.ipynb
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-UI-ff4b4b?logo=streamlit)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn)
-![NLP](https://img.shields.io/badge/NLP-Resume%20Analysis-blueviolet)
-![Sentence Transformers](https://img.shields.io/badge/Sentence--Transformers-Semantic%20Similarity-green)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF6B6B?style=for-the-badge&logo=streamlit&logoColor=white)
+![NLP](https://img.shields.io/badge/NLP-Skill%20Extraction-7C3AED?style=for-the-badge)
+![ATS](https://img.shields.io/badge/ATS-Resume%20Scoring-0891B2?style=for-the-badge)
+![Career Roadmap](https://img.shields.io/badge/Career-Roadmap-16A34A?style=for-the-badge)
+![Status](https://img.shields.io/badge/Project-Ready-111827?style=for-the-badge)
 
 ---
 
