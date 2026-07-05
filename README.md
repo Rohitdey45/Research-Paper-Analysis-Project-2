@@ -1,58 +1,71 @@
-# AI Resume Analyzer using NLP and Deep Learning
+# AI Placement and Resume Readiness System
 
-This project analyzes a candidate resume against a target job description using
-Natural Language Processing and deep-learning based semantic similarity. It
-extracts resume text, detects important sections, identifies technical skills,
-compares resume keywords with job requirements, and generates an overall match
-score with improvement recommendations.
+This project is a Streamlit-based AI career readiness tool that analyzes a resume
+against a target job description, estimates placement readiness, detects skill
+gaps, creates a learning roadmap, and supports mock interview preparation.
+
+The implementation is intentionally modular and local-first. It does not require
+Gemini, OpenAI, FAISS, or a hosted notebook environment to run the core features.
 
 ## Problem Statement
 
-Build an AI Resume Analyzer using NLP and Deep Learning that helps candidates
-understand how well their resume matches a job description and what changes can
-improve their chances of shortlisting.
+Build an AI-powered placement preparation system using NLP and deep-learning
+concepts that helps students evaluate resume quality, job-description alignment,
+role readiness, and interview preparation gaps.
 
 ## Key Features
 
-- Upload a resume as PDF, TXT, or Markdown.
-- Paste a target job description for comparison.
-- Extract skills from resume and job description.
-- Compute skill match and missing skills.
-- Extract and compare important job keywords.
-- Detect resume sections such as Summary, Skills, Experience, Projects, and Education.
-- Estimate experience years from resume text when available.
-- Calculate semantic job-fit score using Sentence-Transformer embeddings.
-- Fall back to TF-IDF similarity if the deep-learning model is unavailable.
-- Generate practical resume improvement recommendations.
-- Export the full analysis report as JSON.
+- Resume upload or paste support for PDF, TXT, and Markdown.
+- ATS-style resume and job description matching.
+- NLP-based skill extraction and keyword-gap analysis.
+- Optional Sentence-Transformer semantic similarity for deep-learning based fit.
+- Automatic fallback to TF-IDF/lexical scoring when transformer models are not installed.
+- Role-based skill-gap analysis for AI Engineer, Data Scientist, MERN Developer,
+  Backend Developer, Full Stack Developer, and Software Engineer.
+- Placement readiness estimator using CGPA, DSA, aptitude, communication, projects,
+  internships, certifications, hackathons, ATS score, and role skill readiness.
+- Personalized daily, weekly, and monthly learning roadmap.
+- Mock interview question bank and answer evaluator.
+- JSON report export.
+- One-command Windows launcher: `run_app.bat`.
+
+## How This Version Is Different
+
+- Uses Streamlit instead of Gradio.
+- Uses separate Python modules instead of one large notebook.
+- Runs without paid LLM/API keys.
+- Keeps scoring transparent and explainable for project evaluation.
+- Focuses on a practical student workflow: resume -> ATS -> skill gap -> readiness
+  -> roadmap -> interview practice.
 
 ## Tech Stack
 
 | Layer | Tool |
 |---|---|
 | Frontend | Streamlit |
-| NLP | TF-IDF, regex parsing, keyword extraction |
-| Deep Learning | Sentence Transformers |
-| ML Utilities | scikit-learn, NumPy |
-| Data Handling | pandas |
+| NLP | Regex parsing, TF-IDF, keyword extraction |
+| Deep Learning | Sentence Transformers, optional |
+| Data Handling | pandas, NumPy |
+| ML Utilities | scikit-learn, optional fallback supported |
 | PDF Parsing | pypdf |
+| Language | Python |
 
 ## Project Structure
 
 ```text
-Research-Paper-Analysis-Project/
+Research-Paper-Analysis-Project-2/
 |-- README.md
 |-- requirements.txt
+|-- run_app.bat
 |-- data/
 |   `-- README.md
 `-- src/
     |-- app.py
+    |-- career_coach.py
     `-- resume_analyzer.py
 ```
 
 ## Setup
-
-Create a virtual environment and install dependencies:
 
 ```bash
 python -m venv .venv
@@ -60,32 +73,47 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
+If you only want to test the Streamlit app quickly, install:
+
+```bash
+.venv\Scripts\python.exe -m pip install streamlit pandas pypdf
+```
+
 ## Run The App
+
+On Windows:
+
+```bash
+run_app.bat
+```
+
+Or run directly:
 
 ```bash
 streamlit run src/app.py
 ```
 
-Open the local URL printed by Streamlit, usually:
+Open:
 
 ```text
 http://localhost:8501
 ```
 
-## How It Works
+## Application Tabs
 
-1. The user uploads a resume or pastes resume text.
-2. The user pastes a target job description.
-3. The app extracts resume signals such as skills, sections, contact details,
-   experience phrases, and keywords.
-4. A Sentence-Transformer model converts the resume and job description into
-   dense vectors.
-5. Cosine similarity between those vectors gives the semantic fit score.
-6. The analyzer combines semantic fit, skill match, keyword match, and resume
-   section coverage into one overall match score.
-7. The app shows missing skills, missing keywords, and actionable suggestions.
+| Tab | Purpose |
+|---|---|
+| Resume Input | Upload/paste resume, paste job description, run analysis |
+| ATS Analysis | Shows ATS score, semantic fit, skill match, keyword match, and recommendations |
+| Skill Gap | Compares detected resume skills with target role requirements |
+| Placement Score | Estimates placement readiness from profile and resume signals |
+| Roadmap | Generates daily, weekly, and monthly improvement plan |
+| Mock Interview | Shows role-specific questions and evaluates answer quality |
+| Export | Downloads the complete report as JSON |
 
 ## Scoring Logic
+
+ATS score:
 
 | Component | Weight |
 |---|---:|
@@ -94,10 +122,23 @@ http://localhost:8501
 | Keyword match | 15% |
 | Resume section coverage | 10% |
 
+Placement readiness combines:
+
+- CGPA
+- DSA score
+- Aptitude score
+- Communication score
+- Project count
+- Internship count
+- Certification count
+- Hackathon count
+- Soft skills score
+- ATS score
+- Role skill readiness
+
 ## Notes
 
-- The first deep-learning analysis can take longer because the transformer
-  model needs to load.
-- For faster testing, turn off the deep-learning model in the sidebar. The app
-  will use TF-IDF similarity instead.
-- Do not commit real resumes to GitHub because they may contain private data.
+- The transformer model is optional. Keep it off for faster local demos.
+- Real resumes may contain private information, so avoid committing them to GitHub.
+- The placement readiness score is an explainable estimator for educational use,
+  not a hiring guarantee.
