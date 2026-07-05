@@ -4,6 +4,7 @@ uploads/
 *.csv
 *.xlsx
 *.json
+*.log
 
 # Python
 __pycache__/
